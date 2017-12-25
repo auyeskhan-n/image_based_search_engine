@@ -1,3 +1,4 @@
+
 {% extends 'base.html' %}
 
 {% load static %}
@@ -15,11 +16,12 @@
     <br>
     <ul>
     {% for item in result %}
-    	<li>
-    		<p>{{ item }}</p>
-    	</li>    	
+      <li>
+        <p>{{ item }}</p>
+      </li>     
     {% endfor %}
     </ul>
     
   {% endif %}
-{% endblock %} 
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}

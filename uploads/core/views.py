@@ -20,11 +20,12 @@ def simple_upload(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
-        return_code = call("python uploads/core/classify_image.py --image_file "+settings.MEDIA_ROOT+"/"+filename+" >123.out", shell=True)
+        return_code = call("python uploads/core/classify_image.py --image_file "+settings.MEDIA_ROOT+"/"+filename+" >123.out", shell=True)  
         lines = [line.rstrip('\n') for line in open('123.out')]
         return render(request, 'core/simple_upload.html', {
             'uploaded_file_url': uploaded_file_url, "result": lines
-        })
+        }) 
+    return render(request, 'core/simple_upload.html')
  
 def model_form_upload(request):
     if request.method == 'POST':
